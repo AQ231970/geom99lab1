@@ -9,9 +9,9 @@ Be creative and use multiple parameters from the API documentation to earn a top
 ## Directions URL
 
 ```
-https://maps.googleapis.com/maps/api/directions/json?origin=Toronto+Ontario&destination=Kitchener+Ontario&key=AIzaSyCM-WWHYHIKY-do4kquMy9Z4wQaQx51AuE
+https://maps.googleapis.com/maps/api/directions/json?origin=place_id:ChIJm_0x87g0K4gR93ZadrabHY0&destination=place_id:ChIJ8xKqLiSJK4gRXJ15uq0CEdg&avoid=tolls&departure_time=now&traffic_model=pessimistic&key=AIzaSyCM-WWHYHIKY-do4kquMy9Z4wQaQx51AuE
 
-#From my home city to where my old env consulting job was! :)
+#From my university to where my first job was, in env/hydrogeo consulting! :)
 ```
 
 Copy/paste the JSON results and save them into the empty file ```mydirections.json``` in this repository
