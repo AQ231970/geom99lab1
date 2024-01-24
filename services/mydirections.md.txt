@@ -9,9 +9,9 @@ Be creative and use multiple parameters from the API documentation to earn a top
 ## Directions URL
 
 ```
-https://maps.googleapis.com/maps/api/directions/json?origin=place_id:ChIJm_0x87g0K4gR93ZadrabHY0&destination=place_id:ChIJ8xKqLiSJK4gRXJ15uq0CEdg&avoid=tolls&departure_time=now&traffic_model=pessimistic&key=AIzaSyCM-WWHYHIKY-do4kquMy9Z4wQaQx51AuE
+https://maps.googleapis.com/maps/api/directions/json?origin=place_id:ChIJm_0x87g0K4gR93ZadrabHY0&destination=place_id:ChIJ8xKqLiSJK4gRXJ15uq0CEdg&mode=bicycling&departure_time=1706362234&traffic_model=pessimistic&waypoints=place_id:ChIJJQXqt_hDK4gRxKvWz2Wxgts|via:place_id:ChIJETguX0MVK4gR9hCljG6efNw&key=AIzaSyCM-WWHYHIKY-do4kquMy9Z4wQaQx51AuE
 
-#From my university to where my first job was, in env/hydrogeo consulting! :)
+#From my university, through my hometown via my brother's place in Brampton, down to where my first job was in env/hydrogeo consulting in Cambridge, ON! :)
 ```
 
 Copy/paste the JSON results and save them into the empty file ```mydirections.json``` in this repository
