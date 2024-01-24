@@ -22,52 +22,88 @@
         }
     </style>
     <script>
-      let aqmap;
-
-      async function initMap() {
-        const { Map, InfoWindow } = (await google.maps.importLibrary("maps")) as google.maps.MapsLibrary;
-
-        const { AdvancedMarkerElement, PinElement } = (await google.maps.importLibrary("marker")) as google.maps.MarkerLibrary;
-      
-        const aqmap = new Map(document.getElementById("map") as HTMLElement, {
-          center: { lat: -2.6383, lng: 23.5029 }, 
-          zoom: 5,
-        });
-
-        const miningSites = [
-          {
-            position: { lat: -11.5953018, lng: 27.3768772 },
-            title: "Lubumbashi",
-          },
-          {
-            position: { lat: -10.8988835, lng: 26.7355331 },
-            title: "Likasi"
-          },
-          {
-            position: { lat: -10.6363621, lng: 25.5750059 },
-            title: "Kolwezi"
-          },
-        ];
-
-        const infoWindow = new InfoWindow();
-        miningSites.forEach(({ position, title }, i) => {
+      function initMap() {
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 7,
+        center: { lat: -2.6383, lng: 23.5029 },
+      });
+      // Set LatLng and title text for the markers. The first marker (Boynton Pass)
+      // receives the initial focus when tab is pressed. Use arrow keys to
+      // move between markers; press tab again to cycle through the map controls.
+      const tourStops = [
+        [{ lat: -11.5953018, lng: 27.3768772 }, "Lubumbashi"],
+        [{ lat: -10.8988835, lng: 26.7355331 }, "Likasi"],
+        [{ lat: -10.6363621, lng: 25.5750059 }, "Kolwezi"],
+      ];
+      // Create an info window to share between markers.
+      const infoWindow = new google.maps.InfoWindow();
+    
+      // Create the markers.
+      tourStops.forEach(([position, title], i) => {
+        const marker = new google.maps.Marker({
           position,
           map,
-          aqmap,
           title: `${i + 1}. ${title}`,
-          content: pin.element,
+          label: `${i + 1}`,
+          optimized: false,
         });
-
-        marker.addListener("click", ({ domEvent, latLng }) => {
-          const { target } = domEvent;
+    
+        // Add a click listener for each marker, and set up the info window.
+        marker.addListener("click", () => {
           infoWindow.close();
-          infoWindow.setContent(marker.title);
-          infoWindow.open(marker.map, marker);
+          infoWindow.setContent(marker.getTitle());
+          infoWindow.open(marker.getMap(), marker);
         });
-        
-      }
+      });
+    }
+    
+    window.initMap = initMap;
+      // let aqmap;
+
+      // async function initMap() {
+      //   const { Map, InfoWindow } = (await google.maps.importLibrary("maps")) as google.maps.MapsLibrary;
+
+      //   const { AdvancedMarkerElement, PinElement } = (await google.maps.importLibrary("marker")) as google.maps.MarkerLibrary;
       
-      initMap();
+      //   const aqmap = new Map(document.getElementById("map") as HTMLElement, {
+      //     center: { lat: -2.6383, lng: 23.5029 }, 
+      //     zoom: 5,
+      //   });
+
+      //   const miningSites = [
+      //     {
+      //       position: { lat: -11.5953018, lng: 27.3768772 },
+      //       title: "Lubumbashi",
+      //     },
+      //     {
+      //       position: { lat: -10.8988835, lng: 26.7355331 },
+      //       title: "Likasi"
+      //     },
+      //     {
+      //       position: { lat: -10.6363621, lng: 25.5750059 },
+      //       title: "Kolwezi"
+      //     },
+      //   ];
+
+      //   const infoWindow = new InfoWindow();
+      //   miningSites.forEach(({ position, title }, i) => {
+      //     position,
+      //     map,
+      //     aqmap,
+      //     title: `${i + 1}. ${title}`,
+      //     content: pin.element,
+      //   });
+
+      //   marker.addListener("click", ({ domEvent, latLng }) => {
+      //     const { target } = domEvent;
+      //     infoWindow.close();
+      //     infoWindow.setContent(marker.title);
+      //     infoWindow.open(marker.map, marker);
+      //   });
+        
+      // }
+      
+      // initMap();
       
     </script>
   </head>
